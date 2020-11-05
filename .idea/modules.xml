@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sure_tosca-flask-server.iml" filepath="$PROJECT_DIR$/.idea/sure_tosca-flask-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tosca-sure.iml" filepath="$PROJECT_DIR$/.idea/tosca-sure.iml" />
     </modules>
   </component>
 </project>
