@@ -29,7 +29,7 @@ class Test(TestCase):
 
     def test_upload(self):
         base_url = 'https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/'
-        file_names = ['application_example_outputs.yaml','application_example_2_topologies.yaml','lifeWatch_vre1.yaml',
+        file_names = ['application_example_outputs.yaml','application_example_2_topologies.yaml',
                       'application_example_updated.yaml','compute.yaml','application_example_provisioned.yaml','topology.yaml',
                       'kubernetes.yaml','application_example_planed.yaml']
 
