@@ -12,6 +12,7 @@ import yaml
 from tinydb import TinyDB, Query
 from tinydb.middlewares import CachingMiddleware
 from tinydb.storages import MemoryStorage
+from toscaparser.common.exception import ValidationError
 from toscaparser.functions import GetAttribute
 from toscaparser.tosca_template import ToscaTemplate
 from werkzeug.datastructures import FileStorage
@@ -79,7 +80,11 @@ def get_tosca_template_model_by_id(id):
 def get_tosca_template(tosca_template_dict):
     start = time.time()
     logger.info("Checking  ToscaTemplate validity")
-    tt = ToscaTemplate(yaml_dict_tpl=copy.deepcopy(tosca_template_dict))
+    dict = copy.deepcopy(tosca_template_dict)
+    if 'workflows' in dict['topology_template']:
+        workflows = dict['topology_template'].pop('workflows')
+        logger.info("Ignoring  workflows: " + str(workflows))
+    tt = ToscaTemplate(yaml_dict_tpl=dict)
     end = time.time()
     elapsed = end - start
     logger.info("Time elapsed: " + str(elapsed))

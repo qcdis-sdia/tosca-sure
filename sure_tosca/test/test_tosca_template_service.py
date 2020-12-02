@@ -30,8 +30,7 @@ class Test(TestCase):
     def test_upload(self):
         base_url = 'https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/'
         file_names = ['application_example_outputs.yaml','application_example_2_topologies.yaml',
-                      'application_example_updated.yaml','compute.yaml','application_example_provisioned.yaml','topology.yaml',
-                      'kubernetes.yaml']
+                      'application_example_updated.yaml','compute.yaml','application_example_provisioned.yaml','topology.yaml']
 
         for file_name in file_names:
             path = self.download_file(base_url+file_name)
@@ -39,6 +38,19 @@ class Test(TestCase):
             doc_id = tosca_template_service.save(self.upload_file(path))
             logger.info("doc_id : " + str(doc_id))
             self.assertTrue (doc_id >= 0)
+
+
+    def test_workflow(self):
+        base_url = 'https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/'
+        path = self.download_file(base_url + 'workflows.yaml')
+        doc_id = tosca_template_service.save(self.upload_file(path))
+        tosca_template_dict = tosca_template_service.get_tosca_template_dict_by_id(doc_id)
+        tosca_template_model = ToscaTemplateModel.from_dict(tosca_template_dict)
+
+        self.assertIsNotNone(tosca_template_model)
+        self.assertIsNotNone(tosca_template_model.topology_template)
+        self.assertIsNotNone(tosca_template_model.topology_template.node_templates)
+
 
     def test_get_tosca_template_model_by_id(self):
         base_url = 'https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/'
