@@ -1,7 +1,7 @@
 
 ![Python package](https://github.com/qcdis-sdia/tosca-sure/workflows/Python%20package/badge.svg)
 # tosca-sure
-TOSCA Simple qUeRy sErvice (SURE).
+TOSCA Simple qUeRy sErvice (SURE) is a web service that runs queries on TOSCA documents.
 
 
 
