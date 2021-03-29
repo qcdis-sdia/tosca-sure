@@ -30,7 +30,9 @@ class Test(TestCase):
     def test_upload(self):
         base_url = 'https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/'
         file_names = ['application_example_outputs.yaml','application_example_2_topologies.yaml',
-                      'application_example_updated.yaml','compute.yaml','application_example_provisioned.yaml','topology.yaml']
+                      'application_example_updated.yaml','compute.yaml','application_example_provisioned.yaml',
+                      'topology.yaml',
+                      'os_provision_workflow.yaml']
 
         for file_name in file_names:
             path = self.download_file(base_url+file_name)
@@ -42,7 +44,7 @@ class Test(TestCase):
 
     def test_workflow(self):
         base_url = 'https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/'
-        path = self.download_file(base_url + 'workflows.yaml')
+        path = self.download_file(base_url + 'os_provision_workflow.yaml')
         doc_id = tosca_template_service.save(self.upload_file(path))
         tosca_template_dict = tosca_template_service.get_tosca_template_dict_by_id(doc_id)
         tosca_template_model = ToscaTemplateModel.from_dict(tosca_template_dict)

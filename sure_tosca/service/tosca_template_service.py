@@ -112,7 +112,9 @@ def save(file: FileStorage):
     # tosca_template_file_path = os.path.join(db_dir_path, file.filename)
     start = time.time()
     logger.info("Got request for tosca template. File name: "+str(file.filename))
+
     purge_all_tables()
+
     dictionary = yaml.safe_load(file.stream)
     # dictionary = yaml.load(file.stream)
     logger.info("tosca template: \n" + str(yaml.dump(dictionary)))
