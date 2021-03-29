@@ -1,19 +1,14 @@
-import json
+import copy
 import logging
 import os
 import tempfile
 import time
-import uuid
-from builtins import print
 from functools import reduce
-import copy
 
 import yaml
 from tinydb import TinyDB, Query
 from tinydb.middlewares import CachingMiddleware
 from tinydb.storages import MemoryStorage
-from toscaparser.common.exception import ValidationError
-from toscaparser.functions import GetAttribute
 from toscaparser.tosca_template import ToscaTemplate
 from werkzeug.datastructures import FileStorage
 
@@ -21,7 +16,6 @@ from sure_tosca.models.base_model_ import Model
 from sure_tosca.models.node_template import NodeTemplateModel as NodeTemplateModel
 from sure_tosca.models.node_template_map import NodeTemplateMapModel
 from sure_tosca.models.tosca_template import ToscaTemplateModel  as ToscaTemplateModel
-
 from sure_tosca.service import tosca_helper
 
 # db = TinyDB(storage=CachingMiddleware(MemoryStorage))
